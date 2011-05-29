@@ -22,6 +22,8 @@ define ('SVN_REPO_PATH', 'file:///path/to/repository/'); // trailing slash ok
 /*** Optional configuration changes ***/
 
 // Set the desired ticket status with the keywords below.
+// If you want to add additional keywords, you will also need to update the
+// regular expression in the main body of the processing script.
 // 0 - New
 // 1 - Open
 // 2 - Pending
