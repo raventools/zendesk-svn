@@ -1,0 +1,4 @@
+REPOS="$1"
+REV="$2"
+
+/usr/bin/php /path/to/script/zendesk-svn.php "$REV"

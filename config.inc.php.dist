@@ -1,0 +1,34 @@
+<?php
+
+/* Configuration */
+
+// This is the URL for your ZenDesk installation
+define ('HELPDESK_URL', 'http://example.zendesk.com'); // no trailing slash
+
+// This is appended to the end of the subversion username for the
+// commit message. Assumes your e-mails are svn-author@example.com
+// in ZenDesk. If not, this script will need to be modified to
+// somehow cross-reference e-mails with their svn 'author'
+define ('EMAIL_ADDRESS_DOMAIN', 'example.com');
+
+// This are the credentials for your 'system' user (can be yourself).
+// All updates will show as 'On Behalf Of' for the registered user
+define ('POST_USER', 'you@example.com');
+define ('POST_PASSWORD', 'mypassword');
+
+// Path to the subversion repository (assumes on same server)
+define ('SVN_REPO_PATH', 'file:///path/to/repository/'); // trailing slash ok
+
+/*** Optional configuration changes ***/
+
+// Set the desired ticket status with the keywords below.
+// 0 - New
+// 1 - Open
+// 2 - Pending
+// 3 - Solved
+$ticket_statuses = array(
+	'fixes' =>         '3', // Solved
+	'addresses' =>     '2', // Pending
+	'fixed' =>         '3',
+	'addressed' =>     '2'
+);
