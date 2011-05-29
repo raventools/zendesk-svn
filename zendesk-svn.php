@@ -18,7 +18,7 @@ to make it executable (e.g. `chmod +x post-commit`) after adding it.
 
 == Configuring this script ==
 
-There are some variables below that you will need to configure below.
+There are some variables below that you will need to set in config.inc.php.
 
 */
 
@@ -118,6 +118,6 @@ foreach ($updates as $k => $update):
 	$err = curl_error($soap_do);
 
 	// Do something with result (optionally)
-	mail('stephenyeargin@localhost.local', 'Comment submitted for ticket #' . $update['ticket_id'], $update['xml'] . "\n\n" . $result . "\n\n" . $err);
+	//mail('you@example.com', 'Comment submitted for ticket #' . $update['ticket_id'], $update['xml'] . "\n\n" . $result . "\n\n" . $err);
 
 endforeach;
