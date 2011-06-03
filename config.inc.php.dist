@@ -3,7 +3,7 @@
 /* Configuration */
 
 // This is the URL for your ZenDesk installation
-define ('HELPDESK_URL', 'http://example.zendesk.com'); // no trailing slash
+define ('HELPDESK_URL', 'https://example.zendesk.com'); // no trailing slash
 
 // This is appended to the end of the subversion username for the
 // commit message. Assumes your e-mails are svn-author@example.com

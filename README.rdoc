@@ -6,6 +6,13 @@ This script is to be used to post comment updates to ZenDesk tickets as part of 
 
 At this phase, it's a proof of concept and has not been tested. Your mileage may vary. If you do get it to work with modifications, please post the updated files back to this project (by either forking / pull request or by simply leaving the changes in a comment).
 
+== Known Requirements
+
+* PHP 5.3.x or higher
+* libxml2 (for XML parsing)
+* cURL (with SSL support)
+* OpenSSL (for cURL)
+
 == The Basics
 
 With the post-commit hook properly installed and the script configured, you should be able to use the key words "fixed", "fixes", "addresses", "addressed" in your commit message followed by a "#{ticket_id_number}" to update the status of tickets in ZenDesk.

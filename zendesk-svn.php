@@ -87,7 +87,7 @@ foreach ($action_statements[0] as $k => $action_statement):
 	
 	// Build the XML message for the update
 	$updates[$k]['xml'] = sprintf(
-		'<ticket><comment><is-public>%s</is-public><value>%s</value></comment><status>%d</status></ticket>',
+		'<ticket><comment><is-public>%s</is-public><value>%s</value></comment><status-id>%d</status-id></ticket>',
 			$updates[$k]['is_public'],
 			htmlentities($updates[$k]['message_body']),
 			(int) $updates[$k]['ticket_status']
@@ -99,25 +99,27 @@ endforeach;
 foreach ($updates as $k => $update):
 
 	// URL of ticket to update
-	$url = HELPDESK_URL . '/' . $update['ticket_id'] . '.xml';
+	$url = HELPDESK_URL . '/tickets/' . $update['ticket_id'] . '.xml';
+	$headers = array('Content-Type: application/xml', 
+		'Content-Length: ' . strlen($update['xml']), 
+		'X-On-Behalf-Of: ' . $update['from_user'] 
+	);
 
 	// cURL parameters
-	$soap_do = curl_init();
-	curl_setopt($soap_do, CURLOPT_URL,            $url );   
-	curl_setopt($soap_do, CURLOPT_CONNECTTIMEOUT, 10); 
-	curl_setopt($soap_do, CURLOPT_TIMEOUT,        10); 
-	curl_setopt($soap_do, CURLOPT_RETURNTRANSFER, true );
-	curl_setopt($soap_do, CURLOPT_SSL_VERIFYPEER, false);  
-	curl_setopt($soap_do, CURLOPT_SSL_VERIFYHOST, false); 
-	curl_setopt($soap_do, CURLOPT_POST,           true ); 
-	curl_setopt($soap_do, CURLOPT_POSTFIELDS,     $update['xml']); 
-	curl_setopt($soap_do, CURLOPT_HTTPHEADER,     array('Content-Type: text/xml; charset=utf-8', 'Content-Length: '.strlen($update['xml']), 'X-On-Behalf-Of: ' . $update['from_user'] )); 
-	curl_setopt($soap_do, CURLOPT_USERPWD, POST_USER . ":" . POST_PASSWORD);
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_USERPWD, POST_USER.':'.POST_PASSWORD);
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $update['xml']);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+	curl_setopt($ch, CURLOPT_HEADER, true);
 
-	$result = curl_exec($soap_do);
-	$err = curl_error($soap_do);
+	$result = curl_exec($ch);
+	$err = curl_error($ch);
 
 	// Do something with result (optionally)
-	//mail('you@example.com', 'Comment submitted for ticket #' . $update['ticket_id'], $update['xml'] . "\n\n" . $result . "\n\n" . $err);
+	//mail('you@example.com', 'Comment submitted for ticket #' . $update['ticket_id'], 'POST URL: ' . $url . "\n\n[POST HEADERS]\n" . print_r($headers, true) . "\n\n" . $update['xml'] . "\n\n[Result]\n" . $result . "\n\n[Error]\n" . $err);
 
 endforeach;
