@@ -1,4 +1,6 @@
+#!/bin/bash
+
 REPOS="$1"
 REV="$2"
 
-/usr/bin/php /path/to/script/zendesk-svn.php "$REV"
+/usr/local/bin/php /path/to/zendesk-php/zendesk-svn.php "$REV"

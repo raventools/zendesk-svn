@@ -2,9 +2,23 @@
 
 This script is to be used to post comment updates to ZenDesk tickets as part of your post-commit hook in subversion. It's written in PHP and requires the SimpleXML package along with cURL to be enabled for PHP.
 
-== Not Tested!
+== Where do I install it?
 
-At this phase, it's a proof of concept and has not been tested. Your mileage may vary. If you do get it to work with modifications, please post the updated files back to this project (by either forking / pull request or by simply leaving the changes in a comment).
+The script itself can live anywhere, but it will work if you simply put it in the `/path/to/repository/hooks/` folder (e.g. `/home/subversion/MyRepository/hooks/zendesk-svn/`). Your post-commit hook needs to be made executable (`chmod +x post-commit`) or your subversion client will complain that the post-commit hook failed.
+
+  ./MyRepository
+    - hooks/
+        - post-commit
+        - zendesk-php/
+            - zendesk-svn.php
+
+== Testing the script
+
+You can run the script from the command line to test a particular commit against the parsing logic (and to ensure that it is integrating properly with ZenDesk).
+
+  /usr/local/bin/php /path/to/zendesk-php/zendesk-svn.php 1234
+
+Where '1234' is the particular revision you want the script to parse.
 
 == Known Requirements
 
