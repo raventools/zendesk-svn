@@ -15,6 +15,7 @@ define ('EMAIL_ADDRESS_DOMAIN', 'example.com');
 // All updates will show as 'On Behalf Of' for the registered user
 define ('POST_USER', 'you@example.com');
 define ('POST_PASSWORD', 'mypassword');
+define ('NOTIFY_EMAIL', '');
 
 // Path to the subversion repository (assumes on same server)
 define ('SVN_REPO_PATH', 'file:///path/to/repository/'); // trailing slash ok

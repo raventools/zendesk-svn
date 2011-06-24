@@ -119,7 +119,9 @@ foreach ($updates as $k => $update):
 	$result = curl_exec($ch);
 	$err = curl_error($ch);
 
-	// Do something with result (optionally)
-	//mail('you@example.com', 'Comment submitted for ticket #' . $update['ticket_id'], 'POST URL: ' . $url . "\n\n[POST HEADERS]\n" . print_r($headers, true) . "\n\n" . $update['xml'] . "\n\n[Result]\n" . $result . "\n\n[Error]\n" . $err);
+	// Notification e-mail address (mostly for debugging)
+	if (defined('NOTIFY_EMAIL') && NOTIFY_EMAIL != ''):
+		mail(NOTIFY_EMAIL, 'Comment submitted for ticket #' . $update['ticket_id'], 'POST URL: ' . $url . "\n\n[POST HEADERS]\n" . print_r($headers, true) . "\n\n" . $update['xml'] . "\n\n[Result]\n" . $result . "\n\n[Error]\n" . $err);
+	endif;
 
 endforeach;
