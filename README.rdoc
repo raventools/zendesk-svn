@@ -12,6 +12,10 @@ The script itself can live anywhere, but it will work if you simply put it in th
         - zendesk-php/
             - zendesk-svn.php
 
+== Configuring the script
+
+You will need to rename/copy config.inc.php.dist to config.inc.php and update the settings within before using this script.
+
 == Testing the script
 
 You can run the script from the command line to test a particular commit against the parsing logic (and to ensure that it is integrating properly with ZenDesk).
