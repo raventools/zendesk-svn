@@ -4,4 +4,4 @@ REPOS="$1"
 REV="$2"
 
 # Make sure you update the path below
-/usr/local/bin/php /path/to/zendesk-php/zendesk-svn.php "$REV"
+/usr/local/bin/php /path/to/zendesk-svn/zendesk-svn.php "$REV"
