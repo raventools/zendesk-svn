@@ -56,7 +56,7 @@ endif;
 
 
 // Parse the message for a ticket #. If not present, ignore completely.
-$lookup = (int) preg_match_all('^(fixes|addresses|fixed|addressed) \#[0-9]+^', strtolower($commit_message), $action_statements);
+$lookup = (int) preg_match_all('^(ticket|fixes|addresses|fixed|addressed) \#[0-9]+^', strtolower($commit_message), $action_statements);
 
 // If no commit actions were detected, close the script
 if (empty($action_statements[0]))
@@ -73,7 +73,7 @@ foreach ($action_statements[0] as $k => $action_statement):
 	$updates[$k]['ticket_id'] = str_replace('#', '', $ticket_ids[0]);
 
 	// Extract the action from the message
-	preg_match('^(fixes|addresses|fixed|addressed)^', $action_statement, $actions);
+	preg_match('^(ticket|fixes|addresses|fixed|addressed)^', $action_statement, $actions);
 	$updates[$k]['ticket_status'] = $ticket_statuses[$actions[0]];
 
 	// Username

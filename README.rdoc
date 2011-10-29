@@ -33,10 +33,11 @@ Where '1234' is the particular revision you want the script to parse.
 
 == The Basics
 
-With the post-commit hook properly installed and the script configured, you should be able to use the key words "fixed", "fixes", "addresses", "addressed" in your commit message followed by a "#{ticket_id_number}" to update the status of tickets in ZenDesk.
+With the post-commit hook properly installed and the script configured, you should be able to use the key words "ticket", "fixed", "fixes", "addresses", "addressed" in your commit message followed by a "#{ticket_id_number}" to update the status of tickets in ZenDesk.
 
 These would work:
 
+   Ticket #2340 is fixed with this change.
    Updated the header to include the new logo. Addresses #1258.
    Fixed #3456 by re-factoring the navigation panel.
    Corrected spelling on home page. Addresses #1258 and addresses #1259  <-- this would post to both tickets
@@ -44,7 +45,7 @@ These would work:
 
 These would not work at all:
 
-   Fixed ticket #1254 by resetting the password. <-- keyword must be immediately before the # sign
+   Fixes for #1254 by resetting the password. <-- keyword must be immediately before the # sign
    Addressed # 1255 with new layout. <-- the space causes the ticket ID to not be recognized
 
 == Note about users

@@ -30,8 +30,9 @@ define ('SVN_REPO_PATH', 'file:///path/to/repository/'); // trailing slash ok
 // 2 - Pending
 // 3 - Solved
 $ticket_statuses = array(
+	'ticket' =>        '2', // Pending
 	'fixes' =>         '3', // Solved
-	'addresses' =>     '2', // Pending
+	'addresses' =>     '2',
 	'fixed' =>         '3',
 	'addressed' =>     '2'
 );
