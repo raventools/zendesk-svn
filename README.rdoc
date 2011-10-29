@@ -41,7 +41,7 @@ These would work:
    Updated the header to include the new logo. Addresses #1258.
    Fixed #3456 by re-factoring the navigation panel.
    Corrected spelling on home page. Addresses #1258 and addresses #1259  <-- this would post to both tickets
-   Corrected spelling on home page. Addresses #1258 and #1258 <-- this only posts to the first one (missing keyword)
+   Corrected spelling on home page. Addresses #1258 and #1260 <-- this only posts to the first one (missing keyword)
 
 These would not work at all:
 
