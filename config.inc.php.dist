@@ -36,3 +36,11 @@ $ticket_statuses = array(
 	'fixed' =>         '3',
 	'addressed' =>     '2'
 );
+
+// Map usernames to e-mail addresses if yours do not follow
+// a typical svnusername@domain.com convention or there are
+// exceptions to the rule.
+$svn_user_emails = array(
+	'svnuser1' => 'zendeskuser1@example.org',
+	'svnuser2' => 'zendeskuser2@example.org'
+);

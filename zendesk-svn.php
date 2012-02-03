@@ -77,7 +77,10 @@ foreach ($action_statements[0] as $k => $action_statement):
 	$updates[$k]['ticket_status'] = $ticket_statuses[$actions[0]];
 
 	// Username
-	$updates[$k]['from_user'] = (string) $user . '@' . EMAIL_ADDRESS_DOMAIN;
+	if (isset($svn_user_emails[$user]) && $svn_user_emails[$user] != '')
+		$updates[$k]['from_user'] = (string) $svn_user_emails[$user];
+	else	
+		$updates[$k]['from_user'] = (string) $user . '@' . EMAIL_ADDRESS_DOMAIN;
 	
 	// Message
 	$updates[$k]['message_body'] = '[r' . $r . '] ' . (string) $commit_message;
